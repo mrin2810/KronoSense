@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>KronoSense</title>
+  <link rel="stylesheet" type="text/css" href="kronosense.style.css">
+  <script type="module" src="kronosense.js"></script>
+</head>
+<body>
+    <header class="title">
+        KronoSense
+    </header>
+    <div id="loader"></div>
+    <main role="main" id="main" class="main hide">
+        <div id="warningWindow"></div>
+        <div class="datePicker">
+            <div class="start-date"><span>Start Date:</span><input id="start-date" name="start-date" type="date" required></div>
+            <div class="end-date"><span>Date:</span><input name="end-date" id="end-date" type="date"></div>
+        </div>
+    <div class="employeeDropdown">
+    <label for="employeeDropdown">Select Job:</label>
+    <select name="employeeDropdown" id="employeeDropdown">
+        <option value="Select Your Employer" disabled>Select Your Employer</option>
+        <!-- Options will be populated here dynamically -->
+    </select>
+    </div>
+   <div id="remainingHours">
+    Remaining Hours for this week: <span id="remainingHrs"></span> Hours and <span id="remainingMins"></span> Minutes
+   </div>
+    <div id="employeeHrsDetails">
+        <!-- Employee details will be displayed here -->
+        Total hours worked till now <span id="Hrs"></span> Hours and <span id="Mins"></span> Minutes
+    </div>
+    </main>
+</body>
+</html>
