@@ -23,9 +23,27 @@
         <!-- Options will be populated here dynamically -->
     </select>
     </div>
-   <div id="remainingHours">
-    Remaining Hours for this week: <span id="remainingHrs"></span> Hours and <span id="remainingMins"></span> Minutes
-   </div>
+   <div>
+    Remaining Hours: <span id="remainingHrs"></span> Hours and <span id="remainingMins"></span> Minutes. 
+    <div class="progress-bar">
+        <div>
+            <div class="outer">
+                <div class="inner">
+                    <div id="num"></div>
+                </div>
+            </div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+            <defs>
+                <linearGradient id="GradientColor">
+                    <stop offset="0%" stop-color="rgb(170 100 255)" />
+                    <stop offset="100%" stop-color="rgb(119 3 253)" />
+                </linearGradient>
+            </defs>
+            <circle cx="80" cy="80" r="70" stoke-linecap="round" class="circle" />
+        </svg>
+        </div>
+    </div>
     <div id="employeeHrsDetails">
         <!-- Employee details will be displayed here -->
         Total hours worked till now <span id="Hrs"></span> Hours and <span id="Mins"></span> Minutes

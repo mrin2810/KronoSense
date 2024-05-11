@@ -1,123 +1,183 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-    font-family: monospace;
-    font-weight: 900;
-    width: 600px;
-    font-size: medium;
-  }
+  font-family: monospace;
+  font-weight: 900;
+  width: 600px;
+  font-size: medium;
+}
 
-  .main {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 600px;
-  }
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 600px;
+}
 
-  .employeeDropdown, .datePicker, .start-date, .end-date, .employeeHrsDetails {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: baseline;
-    width: 600px;
-    padding: 1rem 0;
-    font-size: 15px;
-  }
+.employeeDropdown, .datePicker, .start-date, .end-date, .employeeHrsDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+  width: 600px;
+  padding: 1rem 0;
+  font-size: 15px;
+}
 
-  .employeeHrsDetails, .Hrs, .Mins {
-    font-size: large;
-  }
+.employeeHrsDetails, .Hrs, .Mins {
+  font-size: large;
+}
 
-  .title {
-    font-size: 1.5rem;
-    background-color: rgb(157 97 255);
-    border-radius: 0.1cm;
-    text-align: center;
-    padding: 1rem;
-    font-family: monospace;
-    letter-spacing: 9px;
-    text-transform: uppercase;
-    color: white;
-  }
+.title {
+  font-size: 1.5rem;
+  background-color: rgb(157 97 255);
+  border-radius: 0.1cm;
+  text-align: center;
+  padding: 1rem;
+  font-family: monospace;
+  letter-spacing: 9px;
+  text-transform: uppercase;
+  color: white;
+}
 
-  select, option, input, option:disabled {
-    padding: 0.2rem;
-    display: block;
-    font-size: medium;
-    font-weight: 900;
-  }
+select, option, input, option:disabled {
+  padding: 0.2rem;
+  display: block;
+  font-size: medium;
+  font-weight: 900;
+}
 
-  .hide {
-    display: none;
-  }
+.hide {
+  display: none;
+}
 
-  #loader {
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top: 4px solid #3498db;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-    text-align: center;
-    margin: 20px;
+#loader {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  text-align: center;
+  margin: 20px;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .button {
-  background-color: rgba(110, 120,50, 0.8);
-  cursor: pointer;
-  padding: 1rem;
-  border-radius: 0.2rem;
-  text-align: center;
+background-color: rgba(110, 120,50, 0.8);
+cursor: pointer;
+padding: 1rem;
+border-radius: 0.2rem;
+text-align: center;
 }
 
 .disabled {
-  background-color: rgba(255, 255, 255, 0.3);
+background-color: rgba(255, 255, 255, 0.3);
 }
 
 
 #employeeHrsDetails {
-  font-size: 16px;
-  margin-top: 20px;
-  color: rgb(157 97 255);
-  border-radius: 0.1cm;
-  text-align: center;
-  margin-bottom: 20px;
+font-size: 16px;
+margin-top: 20px;
+color: rgb(157 97 255);
+border-radius: 0.1cm;
+text-align: center;
+margin-bottom: 20px;
 }
 
 #employeeHrsDetails span {
-  font-weight: bold;
-  color: tomato;
-  background-color: aliceblue;
-  padding: 4px;
-  border-radius: 4px;
+font-weight: bold;
+color: tomato;
+background-color: aliceblue;
+padding: 4px;
+border-radius: 4px;
 }
 
 
 
 .datePicker {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .datePicker input {
-    width: 48%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+  width: 48%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 /* Style for select dropdown */
 .employeeDropdown select {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 400px; /* Adjust the max-width as needed */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 400px; /* Adjust the max-width as needed */
+}
+
+.progress-bar {
+width: 160px;
+height: 160px;
+position: relative;
+justify-self: right;
+}
+
+.outer {
+height: 160px;
+width: 160px;
+box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15), -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+border-radius: 50%;
+padding: 20px;
+}
+
+.inner {
+  height: 120px;
+  width: 120px;
+  box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2), inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7), -0.5px -0.5px 0px rgba(255, 255, 255, 1), 0.5px 0.5px 0px rgba(0,0,0,0.15), 0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remaining {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#number {
+  font-weight: 600;
+}
+
+.circle {
+  fill: none;
+  stroke: url(#GradientColor);
+  stroke-width: 20px;
+  stroke-dashoffset: 450;
+  stroke-dasharray: 450;
+  /* animation: anim 2s linear forwards; */
+}
+
+/* @keyframes anim {
+  100% {
+      stroke-dashoffset: var(--progress);
+  }
+} */
+
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
 }

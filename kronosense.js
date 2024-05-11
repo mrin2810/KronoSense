@@ -1,4 +1,4 @@
-import { getActiveTabURL } from "./utils.js";
+import { getActiveTabURL, getTotalDuration, getLastFriday, isFriday, isThursday } from "./utils.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
   const activeTab = await getActiveTabURL();
@@ -16,22 +16,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         makeAPICalls();
       }
     }, 100);
-    const getTotalDuration = (data, startDate, endDate) => {
-      let duration = 0;
-
-      for (const entry of data) {
-        for (const day of entry.days) {
-          const dayDate = day.day.substring(0, 10);
-          if (dayDate >= startDate && dayDate <= endDate) {
-            for (const punch of day.punches) {
-              duration += punch.duration;
-            }
-          }
-        }
-      }
-
-      return duration;
-    };
+   
     async function makeAPICalls() {
       var myHeaders = new Headers();
       myHeaders.append("Accept", "application/json");
@@ -166,18 +151,25 @@ document.addEventListener("DOMContentLoaded", async function () {
             MinDisplay.textContent = minutes;
           }
           if (allOption.selected) {
-            const totalHoursLimit = 20;
+            const totalLimit = 20 * 60;
             const remainingHoursDisplay =
               document.getElementById("remainingHrs");
             const remainingMinutesDisplay =
               document.getElementById("remainingMins");
-            const remainingHours = totalHoursLimit - hours;
-            const remainingMinutes = 60 - minutes;
+            const worked = (hours * 60 + minutes)
+            const remaining = totalLimit - worked;
+            const remainingMinutes = remaining % 60;
+            const remainingHours = Math.floor(remaining / 60);
+            const number = worked / totalLimit;
+            const cssPropertyValue = 450 - 450 * number;
+            const svg = document.getElementsByClassName("circle");
+            // svg.style.setPropery('stroke-dashoffset', `${cssPropertyValue}`);
             remainingHoursDisplay.textContent = remainingHours;
             remainingMinutesDisplay.textContent = remainingMinutes;
             // Hide the remainingDiv since "All" is selected
             const remainingDiv = document.getElementById("remainingHours");
             if (remainingDiv) remainingDiv.style.display = "";
+            
           } else {
             // Show the remainingDiv when "All" is not selected
             const remainingDiv = document.getElementById("remainingHours");
@@ -188,34 +180,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.error("Error:", error);
       }
     }
-
-    function isFriday(dateString) {
-      const selectedDate = new Date(dateString);
-      return selectedDate.getDay() == 4;
-    }
-    function isThursday(dateString) {
-      const selectedDate = new Date(dateString);
-      return selectedDate.getDay() == 3;
-    }
-
-    function getLastFriday() {
-      const today = new Date();
-      const dayOfWeek = today.getDay(); // Sunday - 0, Monday - 1, ..., Saturday - 6
-      let lastFriday = new Date(today);
-
-      if (dayOfWeek >= 5) {
-        // If today is Friday or a day of the weekend, subtract the difference to get to the last Friday
-        lastFriday.setDate(today.getDate() - (dayOfWeek - 5));
-      } else {
-        // If today is before Friday, we need to go to the previous week's Friday
-        lastFriday.setDate(today.getDate() - (dayOfWeek + 2));
-      }
-
-      lastFriday.setHours(0, 0, 0, 0); // reset hours to start of the day
-      return lastFriday;
-    }
-
-    console.log(getLastFriday());
     const dateInput = document.getElementById("start-date");
     dateInput.addEventListener("change", function () {
       const selectedDate = this.value;
@@ -230,8 +194,5 @@ document.addEventListener("DOMContentLoaded", async function () {
     dateInput2.addEventListener("change", function () {
       const selectedDate = this.value;
     });
-  } else {
-    // get the id or class of the container and then
-    // element.innerHTML ="This is not the page"
   }
 });
